@@ -7,9 +7,7 @@ package home.kwyho.apriori
 import scala.io.Source
 import scala.collection.immutable.List
 import scala.collection.immutable.Set
-import scala.collection.mutable.HashTable
 import java.io.File
-import scala.collection.mutable.HashMap
 
 class AprioriAlgorithm(inputFile: File) {
   var transactions : List[Set[String]] = List()
