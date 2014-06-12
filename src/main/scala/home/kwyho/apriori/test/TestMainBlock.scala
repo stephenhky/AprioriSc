@@ -8,5 +8,6 @@ object TestMainBlock {
     val alg = new AprioriAlgorithm(new File("INTEGRATED-DATASET.csv"))
     println("Hello, World!")
     print(alg.itemSet)
+    alg.transactions.foreach(println)
   }
 }
