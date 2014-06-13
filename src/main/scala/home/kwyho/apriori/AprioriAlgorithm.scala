@@ -53,13 +53,13 @@ class AprioriAlgorithm(inputFile: File) {
   }
 
   def calculateAssociationRule(minConfidence : Double = 0.6) = {
-    for (item<-toRetItems.keys) {
+    toRetItems.keys.foreach(item =>
       item.subsets.filter( wordSet => (wordSet.size<item.size & wordSet.size>0))
           .foreach( subset => {associationRules = associationRules :+ (subset, item diff subset,
                                                                        toRetItems(item).toDouble/toRetItems(subset).toDouble)
                               }
                   )
-    }
+    )
     associationRules = associationRules.filter( rule => rule._3>minConfidence)
   }
 }
