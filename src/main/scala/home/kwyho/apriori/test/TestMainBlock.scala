@@ -6,8 +6,10 @@ import java.io.File
 object TestMainBlock {
   def main(args: Array[String]) = {
     val alg = new AprioriAlgorithm(new File("INTEGRATED-DATASET.csv"))
-    println("Hello, World!")
-    print(alg.itemSet)
-    alg.transactions.foreach(println)
+    alg.runApriori()
+    println("===Support Items===")
+    alg.toRetItems.foreach(println)
+    println("===Association Rules===")
+    alg.associationRules.foreach(println)
   }
 }
