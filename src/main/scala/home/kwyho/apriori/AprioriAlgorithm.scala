@@ -24,18 +24,24 @@ class AprioriAlgorithm(inputFile: File) {
   var associationRules : List[(Set[String], Set[String], Double)] = List()
 
   def getSupport(itemComb : Set[String]) : Double = {
-    def withinTransaction(transaction : Set[String]) : Boolean = itemComb.map( x => transaction.contains(x)).reduceRight((x1, x2) => x1 && x2)
+    def withinTransaction(transaction : Set[String]) : Boolean = itemComb
+                                                                  .map( x => transaction.contains(x))
+                                                                  .reduceRight((x1, x2) => x1 && x2)
     val count = transactions.filter(withinTransaction).size
     count.toDouble / transactions.size.toDouble
   }
 
   def runApriori(minSupport : Double = 0.15, minConfidence : Double = 0.6) = {
-    var itemCombs = itemSet.map( word => (Set(word), getSupport(Set(word)))).filter( wordSupportPair => (wordSupportPair._2 > minSupport))
+    var itemCombs = itemSet.map( word => (Set(word), getSupport(Set(word))))
+                           .filter( wordSupportPair => (wordSupportPair._2 > minSupport))
     var currentLSet : Set[Set[String]] = itemCombs.map( wordSupportPair => wordSupportPair._1).toSet
     var k : Int = 2
     while (currentLSet.size > 0) {
-      var currentCSet : Set[Set[String]] = currentLSet.map( wordSet => currentLSet.map(wordSet1 => wordSet | wordSet1)).reduceRight( (set1, set2) => set1 | set2).filter( wordSet => (wordSet.size==k))
-      var currentItemCombs = currentCSet.map( wordSet => (wordSet, getSupport(wordSet))).filter( wordSupportPair => (wordSupportPair._2 > minSupport))
+      val currentCSet : Set[Set[String]] = currentLSet.map( wordSet => currentLSet.map(wordSet1 => wordSet | wordSet1))
+                                                      .reduceRight( (set1, set2) => set1 | set2)
+                                                      .filter( wordSet => (wordSet.size==k))
+      val currentItemCombs = currentCSet.map( wordSet => (wordSet, getSupport(wordSet)))
+                                        .filter( wordSupportPair => (wordSupportPair._2 > minSupport))
       currentLSet = currentItemCombs.map( wordSupportPair => wordSupportPair._1).toSet
       itemCombs = itemCombs | currentItemCombs
       k += 1
@@ -48,7 +54,11 @@ class AprioriAlgorithm(inputFile: File) {
 
   def calculateAssociationRule(minConfidence : Double = 0.6) = {
     for (item<-toRetItems.keys) {
-      item.subsets.filter( wordSet => (wordSet.size<item.size & wordSet.size>0)).foreach( subset => {associationRules = associationRules :+ (subset, item diff subset, toRetItems(item).toDouble/toRetItems(subset).toDouble)})
+      item.subsets.filter( wordSet => (wordSet.size<item.size & wordSet.size>0))
+          .foreach( subset => {associationRules = associationRules :+ (subset, item diff subset,
+                                                                       toRetItems(item).toDouble/toRetItems(subset).toDouble)
+                              }
+                  )
     }
     associationRules = associationRules.filter( rule => rule._3>minConfidence)
   }
