@@ -140,3 +140,5 @@ local.properties
 
 .idea/libraries/scala_sdk_2_10_5.xml
 .idea/scala_compiler.xml
+.idea/
+project/project/
