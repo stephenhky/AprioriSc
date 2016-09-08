@@ -136,3 +136,4 @@ local.properties
 project/
 .idea/
 src/main/scala/META-INF/
+classes/
