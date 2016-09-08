@@ -139,5 +139,5 @@ local.properties
 .recommenders/
 
 .idea/libraries/scala_sdk_2_10_5.xml
-project/project/
+project/
 .idea/
