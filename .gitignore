@@ -135,3 +135,4 @@ local.properties
 .idea/libraries/scala_sdk_2_10_5.xml
 project/
 .idea/
+src/main/scala/META-INF/
