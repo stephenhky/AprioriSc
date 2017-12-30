@@ -25,10 +25,7 @@ class AprioriAlgorithm(inputFile: File) {
   var associationRules : List[(Set[String], Set[String], Double)] = List()
 
   def getSupport(itemComb : Set[String]) : Double = {
-    def withinTransaction(transaction : Set[String]) : Boolean = itemComb
-                                                                  .map( x => transaction.contains(x))
-                                                                  .reduceRight((x1, x2) => x1 && x2)
-    val count = transactions.filter(withinTransaction).size
+    val count = transactions.filter(transaction => itemComb.subsetOf(transaction)).size
     count.toDouble / transactions.size.toDouble
   }
 
