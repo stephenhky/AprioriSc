@@ -8,5 +8,11 @@
     <artifactId>apriori-run</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>home.kwyho.apriori</groupId>
+            <artifactId>apriori-core</artifactId>
+        </dependency>
+    </dependencies>
     
 </project>
