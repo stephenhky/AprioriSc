@@ -21,7 +21,7 @@ class AprioriAlgorithm(inputFile: File) {
       itemSet = itemSet ++ elementSet
     }
   }
-  var toRetItems : Map[Set[String], Double] = Map()
+  var toRetItems : Map[Set[String], java.lang.Double] = Map()
   var associationRules : List[(Set[String], Set[String], Double)] = List()
 
   def getSupport(itemComb : Set[String]) : Double = {
