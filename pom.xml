@@ -16,6 +16,10 @@ reference: http://books.sonatype.com/mvnex-book/reference/multimodule-sect-simpl
     <version>1.0-SNAPSHOT</version>
     <name>SOCcer Project Modules</name>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <modules>
         <module>apriori-core</module>
         <module>apriori-run</module>
