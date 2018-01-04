@@ -14,7 +14,7 @@ reference: http://books.sonatype.com/mvnex-book/reference/multimodule-sect-simpl
     <artifactId>AprioriSc</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>SOCcer Project Modules</name>
+    <name>AprioriSc</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
