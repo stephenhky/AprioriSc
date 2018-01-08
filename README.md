@@ -1,7 +1,7 @@
 # AprioriSc - Running Apriori algorithm on Data Files
 This repository is a demo about how to implement apriori algorithm, an association-rule-finding algorithm in 
 data mining, using the Scala language. A Python implementation can be found in my another repository 
-[PyApriori](https://github.com/stephenhky/PyApriori). 
+[MoguNumerics](https://github.com/stephenhky/MoguNumerics/tree/master/mogu/assrule).
 
 ## References
 * [Apriori algorithm - Wikipedia](https://en.wikipedia.org/wiki/Apriori_algorithm).
